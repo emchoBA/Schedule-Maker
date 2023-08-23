@@ -7,6 +7,5 @@ public class ScheduleMaker {
         PlainTable table = new PlainTable();
 
         table.setVisible(true);
-
     }
 }
