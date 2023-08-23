@@ -1,26 +1,22 @@
-package com.Table;
+package com.GUI;
 
 import com.CellRenderer.HoursRenderer;
 import com.Listeners.CellClickListener;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 
 public class TableClass {
     public JPanel CreateTable(){
         JTable table = getjTable();
+
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-        JPanel extraPanel = new JPanel();
-        extraPanel.setPreferredSize(new Dimension(200,200));
-        extraPanel.setBackground(Color.BLUE);
+
         table.addMouseListener(new CellClickListener());
         table.getColumnModel().getColumn(0).setCellRenderer(new HoursRenderer());
-        table.setSize(500,500);
+        //table.setSize(500,500);
         JScrollPane scrollPane = new JScrollPane(table);
         mainPanel.add(scrollPane);
-        mainPanel.add(extraPanel);
 
         return mainPanel;
     }

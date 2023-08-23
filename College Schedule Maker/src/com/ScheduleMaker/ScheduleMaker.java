@@ -1,6 +1,6 @@
 package com.ScheduleMaker;
 
-import com.Table.TableCreator;
+import com.GUI.TableCreator;
 
 public class ScheduleMaker {
     public static void main(String[] args) {
