@@ -4,9 +4,9 @@ package com.GUI;
 import javax.swing.*;
 import java.awt.*;
 
-public class TableCreator extends JFrame {
+public class CreateGUI extends JFrame {
 
-    public TableCreator() {
+    public CreateGUI() {
         setTitle("College Schedule Maker");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(1000,1000));

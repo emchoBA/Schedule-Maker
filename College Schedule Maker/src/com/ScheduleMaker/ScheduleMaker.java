@@ -1,10 +1,10 @@
 package com.ScheduleMaker;
 
-import com.GUI.TableCreator;
+import com.GUI.CreateGUI;
 
 public class ScheduleMaker {
     public static void main(String[] args) {
-        TableCreator table = new TableCreator();
+        CreateGUI table = new CreateGUI();
 
         table.setVisible(true);
     }
