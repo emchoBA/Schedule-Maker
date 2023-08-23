@@ -7,26 +7,22 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class PlainTable extends JFrame {
-
-    public PlainTable() {
-        setTitle("College Schedule Maker");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1000,1000);
-
-        CreateTable();
-        AddButtons();
-
-    }
-
-    private void CreateTable(){
+public class TableClass {
+    public JPanel CreateTable(){
         JTable table = getjTable();
-
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        JPanel extraPanel = new JPanel();
+        extraPanel.setPreferredSize(new Dimension(200,200));
+        extraPanel.setBackground(Color.BLUE);
         table.addMouseListener(new CellClickListener());
         table.getColumnModel().getColumn(0).setCellRenderer(new HoursRenderer());
-
+        table.setSize(500,500);
         JScrollPane scrollPane = new JScrollPane(table);
-        add(scrollPane, BorderLayout.CENTER);
+        mainPanel.add(scrollPane);
+        mainPanel.add(extraPanel);
+
+        return mainPanel;
     }
 
     private static JTable getjTable() {
@@ -42,15 +38,5 @@ public class PlainTable extends JFrame {
             table.setRowHeight(i, 60);
         }
         return table;
-    }
-
-    private void AddButtons(){
-        JPanel buttonPanel = new JPanel();
-
-        JButton addButton = new JButton("Add item");
-        addButton.setSize(20,20);
-        buttonPanel.add(addButton);
-
-        add(buttonPanel, BorderLayout.WEST);
     }
 }

@@ -1,10 +1,10 @@
 package com.ScheduleMaker;
 
-import com.Table.PlainTable;
+import com.Table.TableCreator;
 
 public class ScheduleMaker {
     public static void main(String[] args) {
-        PlainTable table = new PlainTable();
+        TableCreator table = new TableCreator();
 
         table.setVisible(true);
     }
