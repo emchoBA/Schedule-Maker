@@ -1,6 +1,5 @@
 package com.GUI;
 
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,15 +15,22 @@ public class CreateGUI extends JFrame {
         menuBar.add(fileMenu);
         setJMenuBar(menuBar);
 
-        addTablePanel();
+        addMainPanel();
         addButtonPanel();
         pack();
     }
 
-    private void addTablePanel(){
+    private void addMainPanel(){
+        InformationPanelClass informationPanelInstance = new InformationPanelClass();
+        JPanel informationPanel = informationPanelInstance.createInformationTable();
+
         TableClass tableInstance = new TableClass();
         JPanel tablePanel = tableInstance.CreateTable();
+
+        tablePanel.add(informationPanel);
         add(tablePanel, BorderLayout.CENTER);
+
+
     }
 
     private void addButtonPanel(){
@@ -32,5 +38,4 @@ public class CreateGUI extends JFrame {
         JPanel buttonPanel = buttons.createButtonPanel();
         add(buttonPanel, BorderLayout.WEST);
     }
-
 }

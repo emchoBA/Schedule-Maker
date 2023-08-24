@@ -8,26 +8,33 @@ public class ButtonClass {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
 
-
-        JButton addButton = new JButton("Add item");
-        addButton.setSize(20,20);
-        addButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JButton addButton = getAddButton();
         buttonPanel.add(addButton);
 
         buttonPanel.add(Box.createVerticalStrut(10));
 
-        JButton removeButton = new JButton("Remove item");
-        removeButton.setSize(20,20);
-        removeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JButton removeButton = getRemoveButton();
         buttonPanel.add(removeButton);
-
-
 
         Color buttonPanelColor = new Color(253,245,230);
         buttonPanel.setBackground(buttonPanelColor);
 
-        buttonPanel.setPreferredSize(new Dimension(120, buttonPanel.getPreferredSize().height));
+        buttonPanel.setPreferredSize(new Dimension(buttonPanel.getPreferredSize().width, buttonPanel.getPreferredSize().height));
         return buttonPanel;
+    }
 
+    private JButton getAddButton(){
+        JButton addButton = new JButton("Add Course");
+        addButton.setSize(20,20);
+        addButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        return addButton;
+    }
+    private JButton getRemoveButton(){
+        JButton removeButton = new JButton("Remove Course");
+        removeButton.setSize(20,20);
+        removeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        return removeButton;
     }
 }
