@@ -1,9 +1,15 @@
 package com.GUI;
 
+import com.Listeners.AddButtonActionListener;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class ButtonClass {
+    private final JTable table;
+    public ButtonClass(JTable table){
+        this.table = table;
+    }
     public JPanel createButtonPanel(){
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
@@ -27,6 +33,7 @@ public class ButtonClass {
         JButton addButton = new JButton("Add Course");
         addButton.setSize(20,20);
         addButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        addButton.addActionListener(new AddButtonActionListener(table));
 
         return addButton;
     }

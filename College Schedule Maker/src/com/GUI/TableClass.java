@@ -18,26 +18,26 @@ public class TableClass {
         //table.setSize(500,500);
 
         ////for the cells; trying this for now
-        int targetColumn = -1;
-        int targetRow = -1;
-
-        for(int row = 0; row < table.getRowCount(); row++){
-            if(table.getValueAt(row, 0).equals("09.00")){
-                targetRow = row;
-                break;
-            }
-        }
-
-        for(int col = 0; col < table.getColumnCount(); col++){
-            if(table.getColumnName(col).equals("Monday")){
-                targetColumn = col;
-                break;
-            }
-        }
-
-        if(targetRow != -1 && targetColumn != -1){
-            table.setValueAt("Vay", targetRow, targetColumn);
-        }
+//        int targetColumn = -1;
+//        int targetRow = -1;
+//
+//        for(int row = 0; row < table.getRowCount(); row++){
+//            if(table.getValueAt(row, 0).equals("09.00")){
+//                targetRow = row;
+//                break;
+//            }
+//        }
+//
+//        for(int col = 0; col < table.getColumnCount(); col++){
+//            if(table.getColumnName(col).equals("Monday")){
+//                targetColumn = col;
+//                break;
+//            }
+//        }
+//
+//        if(targetRow != -1 && targetColumn != -1){
+//            table.setValueAt("Vay", targetRow, targetColumn);
+//        }
         ////
         return table;
     }

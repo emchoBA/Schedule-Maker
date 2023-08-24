@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CreateGUI extends JFrame {
+    private final TableClass tableInstance = new TableClass();
+    private final JTable table = tableInstance.CreateTable();
 
     public CreateGUI() {
         setTitle("College Schedule Maker");
@@ -31,18 +33,15 @@ public class CreateGUI extends JFrame {
     }
 
     private void addButtonPanel(){
-        ButtonClass buttons = new ButtonClass();
+        ButtonClass buttons = new ButtonClass(table);
         JPanel buttonPanel = buttons.createButtonPanel();
         add(buttonPanel, BorderLayout.WEST);
     }
 
     private JPanel createTablePanel(){
         JPanel tablePanel = new JPanel();
-        TableClass tableInstance = new TableClass();
-
         tablePanel.setLayout(new BoxLayout(tablePanel, BoxLayout.Y_AXIS));
 
-        JTable table = tableInstance.CreateTable();
         JScrollPane scrollPane = new JScrollPane(table);
 
         tablePanel.add(scrollPane);
