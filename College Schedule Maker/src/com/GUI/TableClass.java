@@ -1,6 +1,6 @@
 package com.GUI;
 
-import com.CellRenderer.HoursRenderer;
+import com.CellRenderer.*;
 import com.Listeners.CellClickListener;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -14,6 +14,10 @@ public class TableClass {
 
         table.addMouseListener(new CellClickListener());
         table.getColumnModel().getColumn(0).setCellRenderer(new HoursRenderer());
+
+        for(int i = 0; i < table.getColumnModel().getColumnCount(); i++){
+            table.getColumnModel().getColumn(i).setHeaderRenderer(new DaysRenderer());
+        }
         //table.setSize(500,500);
         JScrollPane scrollPane = new JScrollPane(table);
         mainPanel.add(scrollPane);
