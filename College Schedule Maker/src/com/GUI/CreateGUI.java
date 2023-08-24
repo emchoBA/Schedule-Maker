@@ -24,18 +24,29 @@ public class CreateGUI extends JFrame {
         InformationPanelClass informationPanelInstance = new InformationPanelClass();
         JPanel informationPanel = informationPanelInstance.createInformationTable();
 
-        TableClass tableInstance = new TableClass();
-        JPanel tablePanel = tableInstance.CreateTable();
+        JPanel mainPanel = createTablePanel();
 
-        tablePanel.add(informationPanel);
-        add(tablePanel, BorderLayout.CENTER);
-
-
+        mainPanel.add(informationPanel);
+        add(mainPanel, BorderLayout.CENTER);
     }
 
     private void addButtonPanel(){
         ButtonClass buttons = new ButtonClass();
         JPanel buttonPanel = buttons.createButtonPanel();
         add(buttonPanel, BorderLayout.WEST);
+    }
+
+    private JPanel createTablePanel(){
+        JPanel tablePanel = new JPanel();
+        TableClass tableInstance = new TableClass();
+
+        tablePanel.setLayout(new BoxLayout(tablePanel, BoxLayout.Y_AXIS));
+
+        JTable table = tableInstance.CreateTable();
+        JScrollPane scrollPane = new JScrollPane(table);
+
+        tablePanel.add(scrollPane);
+
+        return tablePanel;
     }
 }

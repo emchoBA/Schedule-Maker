@@ -6,11 +6,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class TableClass {
-    public JPanel CreateTable(){
+    public JTable CreateTable(){
         JTable table = getjTable();
-
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
         table.addMouseListener(new CellClickListener());
         table.getColumnModel().getColumn(0).setCellRenderer(new HoursRenderer());
@@ -19,10 +16,30 @@ public class TableClass {
             table.getColumnModel().getColumn(i).setHeaderRenderer(new DaysRenderer());
         }
         //table.setSize(500,500);
-        JScrollPane scrollPane = new JScrollPane(table);
-        mainPanel.add(scrollPane);
 
-        return mainPanel;
+        ////for the cells; trying this for now
+        int targetColumn = -1;
+        int targetRow = -1;
+
+        for(int row = 0; row < table.getRowCount(); row++){
+            if(table.getValueAt(row, 0).equals("09.00")){
+                targetRow = row;
+                break;
+            }
+        }
+
+        for(int col = 0; col < table.getColumnCount(); col++){
+            if(table.getColumnName(col).equals("Monday")){
+                targetColumn = col;
+                break;
+            }
+        }
+
+        if(targetRow != -1 && targetColumn != -1){
+            table.setValueAt("Vay", targetRow, targetColumn);
+        }
+        ////
+        return table;
     }
 
     private static JTable getjTable() {
