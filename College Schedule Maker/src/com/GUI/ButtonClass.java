@@ -1,6 +1,7 @@
 package com.GUI;
 
 import com.Listeners.AddButtonActionListener;
+import com.Listeners.RemoveButtonListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,6 +42,7 @@ public class ButtonClass {
         JButton removeButton = new JButton("Remove Course");
         removeButton.setSize(20,20);
         removeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        removeButton.addActionListener(new RemoveButtonListener(table));
 
         return removeButton;
     }

@@ -1,11 +1,11 @@
-package com.CellRenderer;
+package com.CellEditors;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 
-public class DaysRenderer extends DefaultTableCellRenderer {
+public class Days_CellRenderer extends DefaultTableCellRenderer {
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         Component daysRendererComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
