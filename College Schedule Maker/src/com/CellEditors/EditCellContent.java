@@ -1,5 +1,6 @@
 package com.CellEditors;
 
+import com.Listeners.ButtonPanelComponents.ButtonPanel_CourseName;
 import com.Listeners.ButtonPanelComponents.ButtonPanel_Days;
 import com.Listeners.ButtonPanelComponents.ButtonPanel_Hours;
 
@@ -8,22 +9,47 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class EditCellContent {
-    public EditCellContent(JTable table,String text){
-        ButtonPanel_Days daysClass = new ButtonPanel_Days();
-        JPanel daysPanel = daysClass.getDaysPanel();
-        JRadioButton[] daysRadioButton = daysClass.getDaysRadioButton();
+    private JRadioButton[] daysRadioButton;
+    private JCheckBox[] hoursCheckBox;
+    private final ButtonPanel_CourseName courseNamePanel = new ButtonPanel_CourseName();
+    private final Boolean add;
+    public EditCellContent(JTable table, Boolean add){// use something like int?
+        this.add = add;
 
+        JPanel inputPanel = createInputPanel(courseNamePanel,getDaysPanel(),getHoursPanel());
+        int result = JOptionPane.showConfirmDialog(null, inputPanel, "Select", JOptionPane.OK_CANCEL_OPTION);
+
+        doOperation(result, table);
+    }
+
+    private JPanel getHoursPanel(){
         ButtonPanel_Hours hourClass = new ButtonPanel_Hours();
         JPanel hoursPanel = hourClass.getHoursPanel();
-        JCheckBox[] hoursCheckBox = hourClass.getHoursCheckBox();
+        this.hoursCheckBox = hourClass.getHoursCheckBox();
 
+        return hoursPanel;
+    }
+
+    private JPanel getDaysPanel(){
+        ButtonPanel_Days daysClass = new ButtonPanel_Days();
+        JPanel daysPanel = daysClass.getDaysPanel();
+        this.daysRadioButton = daysClass.getDaysRadioButton();
+
+        return daysPanel;
+    }
+
+    private JPanel createInputPanel(JPanel courseNamePanel,JPanel daysPanel, JPanel hoursPanel){
         JPanel inputPanel = new JPanel(new BorderLayout());
+        inputPanel.add(courseNamePanel, BorderLayout.NORTH);
         inputPanel.add(daysPanel, BorderLayout.WEST);
         inputPanel.add(hoursPanel, BorderLayout.EAST);
 
-        int result = JOptionPane.showConfirmDialog(null, inputPanel, "Select", JOptionPane.OK_CANCEL_OPTION);
+        return inputPanel;
+    }
 
+    private void doOperation(int result, JTable table){
         if (result == JOptionPane.OK_OPTION) {
+            String text = courseNamePanel.getCourseName();
             String inputDay = null;
             for(JRadioButton radioButton : daysRadioButton){
                 if(radioButton.isSelected()){
@@ -57,8 +83,15 @@ public class EditCellContent {
                         }
                     }
 
-                    if(rowIndex != -1 && columnIndex != -1){
-                        table.setValueAt(text, rowIndex, columnIndex);
+                    if(add) {
+                        if (rowIndex != -1 && columnIndex != -1) {
+                            table.setValueAt(text, rowIndex, columnIndex);
+                        }
+                    }
+                    else{
+                        if (rowIndex != -1 && columnIndex != -1) {
+                            table.setValueAt("", rowIndex, columnIndex);
+                        }
                     }
                 }
             }

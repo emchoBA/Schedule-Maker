@@ -15,8 +15,7 @@ public class RemoveButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String clearCell = "";
 
-        new EditCellContent(table, clearCell);
+        new EditCellContent(table, false);
     }
 }

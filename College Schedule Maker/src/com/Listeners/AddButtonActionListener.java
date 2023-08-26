@@ -15,8 +15,7 @@ public class AddButtonActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String courseName = "courseNamePlaceholder";
 
-        new EditCellContent(table, courseName);
+        new EditCellContent(table, true);
     }
 }
