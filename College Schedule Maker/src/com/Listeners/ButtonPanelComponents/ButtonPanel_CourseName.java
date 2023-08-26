@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ButtonPanel_CourseName extends JPanel{
-    private JTextField courseName;
+    private final JTextField courseName;
     public ButtonPanel_CourseName(){
         setLayout(new BorderLayout());
         add(new JLabel("Course Name:"), BorderLayout.NORTH);
