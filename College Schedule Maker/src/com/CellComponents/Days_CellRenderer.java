@@ -1,4 +1,4 @@
-package com.CellEditors;
+package com.CellComponents;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

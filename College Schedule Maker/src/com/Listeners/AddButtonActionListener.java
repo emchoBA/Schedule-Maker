@@ -1,6 +1,6 @@
 package com.Listeners;
 
-import com.CellEditors.EditCellContent;
+import com.CellComponents.EditCellContent;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

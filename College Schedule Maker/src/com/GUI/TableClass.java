@@ -1,6 +1,6 @@
 package com.GUI;
 
-import com.CellEditors.*;
+import com.CellComponents.*;
 import com.Listeners.CellClickListener;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

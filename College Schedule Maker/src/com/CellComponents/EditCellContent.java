@@ -1,10 +1,12 @@
-package com.CellEditors;
+package com.CellComponents;
 
+import com.Listeners.ButtonPanelComponents.ButtonPanel_ColorSelectionPanel;
 import com.Listeners.ButtonPanelComponents.ButtonPanel_CourseName;
 import com.Listeners.ButtonPanelComponents.ButtonPanel_Days;
 import com.Listeners.ButtonPanelComponents.ButtonPanel_Hours;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -12,11 +14,14 @@ public class EditCellContent {
     private JRadioButton[] daysRadioButton;
     private JCheckBox[] hoursCheckBox;
     private final ButtonPanel_CourseName courseNamePanel = new ButtonPanel_CourseName();
+    private final ButtonPanel_ColorSelectionPanel colorSelectionPanel = new ButtonPanel_ColorSelectionPanel();
     private final Boolean add;
+
+
     public EditCellContent(JTable table, Boolean add){// use something like int?
         this.add = add;
 
-        JPanel inputPanel = createInputPanel(courseNamePanel,getDaysPanel(),getHoursPanel());
+        JPanel inputPanel = createInputPanel(getDaysPanel(),getHoursPanel());
         int result = JOptionPane.showConfirmDialog(null, inputPanel, "Select", JOptionPane.OK_CANCEL_OPTION);
 
         doOperation(result, table);
@@ -38,18 +43,21 @@ public class EditCellContent {
         return daysPanel;
     }
 
-    private JPanel createInputPanel(JPanel courseNamePanel,JPanel daysPanel, JPanel hoursPanel){
+    private JPanel createInputPanel(JPanel daysPanel, JPanel hoursPanel){
         JPanel inputPanel = new JPanel(new BorderLayout());
-        inputPanel.add(courseNamePanel, BorderLayout.NORTH);
         inputPanel.add(daysPanel, BorderLayout.WEST);
         inputPanel.add(hoursPanel, BorderLayout.EAST);
+        if(add) {
+            inputPanel.add(courseNamePanel, BorderLayout.NORTH);
+            inputPanel.add(colorSelectionPanel, BorderLayout.SOUTH);
+        }
 
         return inputPanel;
     }
 
     private void doOperation(int result, JTable table){
         if (result == JOptionPane.OK_OPTION) {
-            String text = courseNamePanel.getCourseName();
+
             String inputDay = null;
             for(JRadioButton radioButton : daysRadioButton){
                 if(radioButton.isSelected()){
@@ -84,17 +92,26 @@ public class EditCellContent {
                     }
 
                     if(add) {
+                        String text = courseNamePanel.getCourseName();
+                        Color cellColor = colorSelectionPanel.getCellColor();
                         if (rowIndex != -1 && columnIndex != -1) {
                             table.setValueAt(text, rowIndex, columnIndex);
+                            NormalCell_CellRenderer cellRenderer = new NormalCell_CellRenderer();
+                            cellRenderer.setCellColor(rowIndex, columnIndex, cellColor);
+                            table.getColumnModel().getColumn(columnIndex).setCellRenderer(cellRenderer);
                         }
                     }
                     else{
                         if (rowIndex != -1 && columnIndex != -1) {
                             table.setValueAt("", rowIndex, columnIndex);
+//                            NormalCell_CellRenderer removeRenderer = new NormalCell_CellRenderer();
+//                            removeRenderer.setCellColor(table.getGridColor());
+//                            table.getColumnModel().getColumn(columnIndex);
                         }
                     }
                 }
             }
         }
     }
+
 }
