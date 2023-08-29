@@ -7,5 +7,6 @@ public class ScheduleMaker {
         CreateGUI table = new CreateGUI();
 
         table.setVisible(true);
+
     }
 }
