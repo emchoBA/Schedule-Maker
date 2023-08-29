@@ -1,5 +1,6 @@
 package com.CellComponents;
 
+import com.GUI.CreateGUI;
 import com.Listeners.ButtonPanelComponents.ButtonPanel_ColorSelectionPanel;
 import com.Listeners.ButtonPanelComponents.ButtonPanel_CourseName;
 import com.Listeners.ButtonPanelComponents.ButtonPanel_Days;
@@ -11,6 +12,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class EditCellContent {
+    private final CreateGUI createGUI;
     private JRadioButton[] daysRadioButton;
     private JCheckBox[] hoursCheckBox;
     private final ButtonPanel_CourseName courseNamePanel = new ButtonPanel_CourseName();
@@ -18,9 +20,10 @@ public class EditCellContent {
     private final Boolean add;
 
 
-    public EditCellContent(JTable table, Boolean add){// use something like int?
-        this.add = add;
 
+    public EditCellContent(JTable table, Boolean add, CreateGUI createGUI){// use something like int?
+        this.add = add;
+        this.createGUI = createGUI;
         JPanel inputPanel = createInputPanel(getDaysPanel(),getHoursPanel());
         int result = JOptionPane.showConfirmDialog(null, inputPanel, "Select", JOptionPane.OK_CANCEL_OPTION);
 
@@ -96,9 +99,16 @@ public class EditCellContent {
                         Color cellColor = colorSelectionPanel.getCellColor();
                         if (rowIndex != -1 && columnIndex != -1) {
                             table.setValueAt(text, rowIndex, columnIndex);
+
                             NormalCell_CellRenderer cellRenderer = new NormalCell_CellRenderer();
                             cellRenderer.setCellColor(rowIndex, columnIndex, cellColor);
+
+                            createGUI.updateCreatedCells(new Point(rowIndex, columnIndex), cellColor);
+
+                            cellRenderer.addToList(createGUI.getCreatedCells());
+
                             table.getColumnModel().getColumn(columnIndex).setCellRenderer(cellRenderer);
+                            table.repaint();
                         }
                     }
                     else{

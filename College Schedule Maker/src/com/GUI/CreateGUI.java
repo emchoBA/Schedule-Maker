@@ -2,10 +2,12 @@ package com.GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
 
 public class CreateGUI extends JFrame {
     private final TableClass tableInstance = new TableClass();
     private final JTable table = tableInstance.CreateTable();
+    private final HashMap<Point, Color> createdCells = new HashMap<>();
 
     public CreateGUI() {
         setTitle("College Schedule Maker");
@@ -33,7 +35,7 @@ public class CreateGUI extends JFrame {
     }
 
     private void addButtonPanel(){
-        ButtonClass buttons = new ButtonClass(table);
+        ButtonClass buttons = new ButtonClass(table, this);
         JPanel buttonPanel = buttons.createButtonPanel();
         add(buttonPanel, BorderLayout.WEST);
     }
@@ -47,5 +49,13 @@ public class CreateGUI extends JFrame {
         tablePanel.add(scrollPane);
 
         return tablePanel;
+    }
+
+    public void updateCreatedCells(Point cellPoint, Color color){
+        createdCells.put(cellPoint, color);
+    }
+
+    public HashMap<Point, Color> getCreatedCells() {
+        return createdCells;
     }
 }

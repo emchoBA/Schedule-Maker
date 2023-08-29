@@ -8,8 +8,10 @@ import java.awt.*;
 
 public class ButtonClass {
     private final JTable table;
-    public ButtonClass(JTable table){
+    private final CreateGUI createGUI;
+    public ButtonClass(JTable table, CreateGUI createGUI){
         this.table = table;
+        this.createGUI = createGUI;
     }
     public JPanel createButtonPanel(){
         JPanel buttonPanel = new JPanel();
@@ -34,7 +36,7 @@ public class ButtonClass {
         JButton addButton = new JButton("Add Course");
         addButton.setSize(20,20);
         addButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        addButton.addActionListener(new AddButtonActionListener(table));
+        addButton.addActionListener(new AddButtonActionListener(table, createGUI));
 
         return addButton;
     }
@@ -42,7 +44,7 @@ public class ButtonClass {
         JButton removeButton = new JButton("Remove Course");
         removeButton.setSize(20,20);
         removeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        removeButton.addActionListener(new RemoveButtonListener(table));
+        removeButton.addActionListener(new RemoveButtonListener(table, createGUI));
 
         return removeButton;
     }
