@@ -4,6 +4,7 @@ import com.Listeners.AddButtonActionListener;
 import com.Listeners.RemoveButtonListener;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 public class ButtonClass {
@@ -25,8 +26,18 @@ public class ButtonClass {
         JButton removeButton = getRemoveButton();
         buttonPanel.add(removeButton);
 
+        buttonPanel.add(Box.createVerticalStrut(10));
+
+
         Color buttonPanelColor = new Color(253,245,230);
         buttonPanel.setBackground(buttonPanelColor);
+
+        JPanel automateButtonPanel = getAutomationPanel();
+        automateButtonPanel.setBackground(buttonPanelColor);
+
+        buttonPanel.add(automateButtonPanel);
+
+        buttonPanel.add(Box.createVerticalStrut(Integer.MAX_VALUE)); //to make the panel look cleaner.
 
         buttonPanel.setPreferredSize(new Dimension(buttonPanel.getPreferredSize().width, buttonPanel.getPreferredSize().height));
         return buttonPanel;
@@ -47,5 +58,22 @@ public class ButtonClass {
         removeButton.addActionListener(new RemoveButtonListener(table, createGUI));
 
         return removeButton;
+    }
+
+    private JButton getAutomateButton(){
+        JButton automateButton = new JButton("Automate");
+        automateButton.setSize(20,20);
+        automateButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        return automateButton;
+    }
+    private JPanel getAutomationPanel(){
+        JPanel automateButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JButton automateButton = getAutomateButton();
+        automateButtonPanel.add(automateButton);
+        TitledBorder titledBorder = BorderFactory.createTitledBorder("Automation:");
+        automateButtonPanel.setBorder(titledBorder);
+
+        return  automateButtonPanel;
     }
 }

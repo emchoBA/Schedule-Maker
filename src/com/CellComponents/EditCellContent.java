@@ -7,7 +7,6 @@ import com.Listeners.ButtonPanelComponents.ButtonPanel_Days;
 import com.Listeners.ButtonPanelComponents.ButtonPanel_Hours;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -21,7 +20,7 @@ public class EditCellContent {
 
 
 
-    public EditCellContent(JTable table, Boolean add, CreateGUI createGUI){// use something like int?
+    public EditCellContent(JTable table, Boolean add, CreateGUI createGUI){
         this.add = add;
         this.createGUI = createGUI;
         JPanel inputPanel = createInputPanel(getDaysPanel(),getHoursPanel());
@@ -116,7 +115,6 @@ public class EditCellContent {
                             table.setValueAt(null, rowIndex, columnIndex);
 
                             NormalCell_CellRenderer removeRenderer = new NormalCell_CellRenderer();
-//                            removeRenderer.setCellColor(table.getGridColor());
 
                             createGUI.removeFromCreatedCells(new Point(rowIndex, columnIndex));
 
@@ -129,5 +127,4 @@ public class EditCellContent {
             }
         }
     }
-
 }
