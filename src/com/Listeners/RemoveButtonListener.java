@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 public class RemoveButtonListener implements ActionListener {
     private final JTable table;
-    private CreateGUI createGUI;
+    private final CreateGUI createGUI;
 
     public RemoveButtonListener(JTable table, CreateGUI createGUI){
         this.table = table;

@@ -12,14 +12,25 @@ public class ButtonPanel_ColorSelectionPanel extends JPanel {
     public ButtonPanel_ColorSelectionPanel(){
         setLayout(new BorderLayout());
 
-        JButton redButton = createColorButton(Color.RED);
-        JButton greenButton = createColorButton(Color.GREEN);
-        JButton cyanButton = createColorButton(Color.CYAN);
+        JButton redButton = createColorButton(new Color(215,0,64));
+        JButton greenButton = createColorButton(new Color(175,225,175));
+        JButton cyanButton = createColorButton(new Color(70,130,180));
+        JButton purpleButton = createColorButton(new Color(207,159,255));
+        JButton pinkButton = createColorButton(new Color(255,192,203));
+        JButton orangeButton = createColorButton(new Color(255,127,80));
+        JButton yellowButton = createColorButton(new Color(252,245,95));
+        JButton grayButton = createColorButton(new Color(211,211,211));
 
         JPanel colorPanel = new JPanel();
+
         colorPanel.add(redButton);
         colorPanel.add(greenButton);
         colorPanel.add(cyanButton);
+        colorPanel.add(purpleButton);
+        colorPanel.add(pinkButton);
+        colorPanel.add(orangeButton);
+        colorPanel.add(yellowButton);
+        colorPanel.add(grayButton);
 
         TitledBorder colorBorder = BorderFactory.createTitledBorder("Select Cell Color:");
         setBorder(colorBorder);

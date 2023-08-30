@@ -105,7 +105,7 @@ public class EditCellContent {
 
                             createGUI.updateCreatedCells(new Point(rowIndex, columnIndex), cellColor);
 
-                            cellRenderer.addToList(createGUI.getCreatedCells());
+                            cellRenderer.setRendererHashMap(createGUI.getCreatedCells());
 
                             table.getColumnModel().getColumn(columnIndex).setCellRenderer(cellRenderer);
                             table.repaint();
@@ -113,10 +113,16 @@ public class EditCellContent {
                     }
                     else{
                         if (rowIndex != -1 && columnIndex != -1) {
-                            table.setValueAt("", rowIndex, columnIndex);
-//                            NormalCell_CellRenderer removeRenderer = new NormalCell_CellRenderer();
+                            table.setValueAt(null, rowIndex, columnIndex);
+
+                            NormalCell_CellRenderer removeRenderer = new NormalCell_CellRenderer();
 //                            removeRenderer.setCellColor(table.getGridColor());
-//                            table.getColumnModel().getColumn(columnIndex);
+
+                            createGUI.removeFromCreatedCells(new Point(rowIndex, columnIndex));
+
+                            removeRenderer.setRendererHashMap(createGUI.getCreatedCells());
+
+                            table.getColumnModel().getColumn(columnIndex).setCellRenderer(removeRenderer);
                         }
                     }
                 }

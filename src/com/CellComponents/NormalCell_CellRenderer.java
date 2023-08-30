@@ -19,7 +19,7 @@ public class NormalCell_CellRenderer extends DefaultTableCellRenderer {
         this.cellColor = color;
     }
 
-    public void addToList(HashMap<Point, Color> createdCells){
+    public void setRendererHashMap(HashMap<Point, Color> createdCells){
         cellColors = createdCells;
     }
     @Override
@@ -31,8 +31,10 @@ public class NormalCell_CellRenderer extends DefaultTableCellRenderer {
 
         ((JLabel) component).setHorizontalAlignment(JLabel.CENTER);
 
-        if(row == rowIndex && column == columnIndex){
-            component.setBackground(cellColor);
+        if(table.getValueAt(row, column) != null) {
+            if (row == rowIndex && column == columnIndex) {
+                component.setBackground(cellColor);
+            }
         }
 
         if(table.getValueAt(row, column) != null){

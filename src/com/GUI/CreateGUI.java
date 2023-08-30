@@ -55,6 +55,10 @@ public class CreateGUI extends JFrame {
         createdCells.put(cellPoint, color);
     }
 
+    public void removeFromCreatedCells(Point removePoint){
+        createdCells.remove(removePoint);
+    }
+
     public HashMap<Point, Color> getCreatedCells() {
         return createdCells;
     }
