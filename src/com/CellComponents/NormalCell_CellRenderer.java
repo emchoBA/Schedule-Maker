@@ -26,7 +26,7 @@ public class NormalCell_CellRenderer extends DefaultTableCellRenderer {
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
         Component component = super.getTableCellRendererComponent(table, value,isSelected, hasFocus, row, column);
 
-        Font cellFont = new Font("Arial", Font.BOLD, 14);
+        Font cellFont = new Font("Arial", Font.BOLD, 12);
         component.setFont(cellFont);
 
         ((JLabel) component).setHorizontalAlignment(JLabel.CENTER);
@@ -41,8 +41,6 @@ public class NormalCell_CellRenderer extends DefaultTableCellRenderer {
             Point cellPoint = new Point(row, column);
             Color storedColor = cellColors.get(cellPoint);
             component.setBackground(storedColor);
-            System.out.println(row +" "+ column + storedColor);
-            System.out.println("**********");
         }
 
         else{
